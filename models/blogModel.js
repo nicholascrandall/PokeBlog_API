@@ -3,7 +3,7 @@ const {Schema, model} = mongoose
 
 const blogSchema = new Schema({
     name: {type:String, default: "Anonymous PokeBlogger"},
-    avatar: {type:String, default: "/default_avatar.png"},
+    avatar: String,
     about: String,
     caughtPokemon: [String],
     isAdmin: {type:Boolean, default: false},
