@@ -13,8 +13,8 @@ blog.get('/', (req, res) => {
 })
 
 //show
-blog.get('/:name', (req, res) => {
-   BlogModel.findOne({name: req.params.name}, (error, foundBlog) => {
+blog.get('/:id', (req, res) => {
+   BlogModel.findById(req.params.id, (error, foundBlog) => {
        if (error) {
            res.status(400).json({ error: error.essage })
        }
