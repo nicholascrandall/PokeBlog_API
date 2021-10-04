@@ -23,4 +23,17 @@ comment.post('/', (req, res) => {
     })
 })
 
+//delete
+comment.delete(':id', (req, res) => {
+    CommentModel.findByIdAndDelete(req.params.id, (error, deletedComment) => {
+        if (error) {
+            req.status(400).json({ error: error.message })
+        }
+        else if (deletedComment === null) {
+            res.status(404).json({ message: "Comment Not Found" })
+        }
+        res.status(200).json({ message: "Comment deleted successfully" })
+    })
+})
+
 module.exports = comment
