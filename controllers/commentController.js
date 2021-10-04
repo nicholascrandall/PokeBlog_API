@@ -3,6 +3,16 @@ const comment = express.Router()
 const CommentModel = require('../models/commentModel')
 // const commentSeed = require('../models/commentSeed')
 
+// get ALL comments
+comment.get('/', (req, res) => {
+    CommentModel.find({}, (err, foundComments, next) => {
+        if(err) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json({data: foundComments})
+    })
+})
+
 // index for a specific blog's comments
 comment.get('/:blogid', (req, res) => {
     CommentModel.find({blogid: req.params.blogid}, (error, foundComments) => {
