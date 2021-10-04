@@ -13,4 +13,14 @@ comment.get('/:blogid', (req, res) => {
     })
 })
 
+// create
+comment.post('/', (req, res) => {
+    CommentModel.create(req.body, (error, createdComment) => {
+        if (error) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json(createdComment)
+    })
+})
+
 module.exports = comment
