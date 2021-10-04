@@ -17,6 +17,7 @@ db.on('disconnected', ()=> console.log('Mongoose disconnected...'));
 
 //controllers
 app.use('/blog', require('./controllers/blogController'))
+app.use('/comment', require('./controllers/commentController'))
 
 app.listen(PORT, () => {
     console.log('server is listening')
