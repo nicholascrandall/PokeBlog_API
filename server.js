@@ -2,13 +2,13 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT
+const mongoose = require('mongoose')
+
+//middleware
+app.use(express.json())
 
 //mongoose
-mongoose.connect(process.env.MONGODBURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-})
+mongoose.connect(process.env.MONGODBURI)
 
 const db = mongoose.connection;
 db.once('open', ()=> console.log('DB connected...'));
