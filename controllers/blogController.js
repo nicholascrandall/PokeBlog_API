@@ -4,7 +4,22 @@ const BlogModel = require('../models/blogModel')
 
 //index
 blog.get('/', (req, res) => {
-    res.send("index route")
+    BlogModel.find({}, (err, foundBlogs, next) => {
+        if(err) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json({data: foundBlogs})
+    })
+})
+
+//show
+blog.get('/:name', (req, res) => {
+   BlogModel.findOne({name: req.params.name}, (error, foundBlog) => {
+       if (error) {
+           res.status(400).json({ error: error.essage })
+       }
+       res.status(200).json({data: foundBlog})
+   })
 })
 
 //create
