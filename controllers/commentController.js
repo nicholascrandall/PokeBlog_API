@@ -34,7 +34,7 @@ comment.post('/', (req, res) => {
 })
 
 // delete
-comment.delete(':id', (req, res) => {
+comment.delete('/:id', (req, res) => {
     CommentModel.findByIdAndDelete(req.params.id, (error, deletedComment) => {
         if (error) {
             req.status(400).json({ error: error.message })
