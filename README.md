@@ -1,6 +1,10 @@
 # PokeBlog_API
 Pokemon Blog backend, used to create Pokemon themed blogs where users can show off all the Pokemon they've caught. Now with full CRUD comment functionality.
 
+Made with Express and Mongoose.
+
+To run locally, install node dependencies via "npm i" or "yarn install"
+
 # Routes
 
 ## GET /blog
