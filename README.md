@@ -32,7 +32,7 @@ Example JSON:
         "name": "Michael",
         "avatar": "https://static.wikia.nocookie.net/pokemon/images/6/6d/Ash_anime_Journeys.png/revision/latest?cb=20191027002145",
         "about": "Hi guys, my name is Michael and my favorite pokemon is Eevee!",
-        "caughtPokemon": ["Eevee", "Squirtle", "Geodude"]
+        "caughtPokemon": ["eevee", "squirtle", "geodude"]
     }
 ```
 ## GET /comment
@@ -65,5 +65,12 @@ deletes a comment using the DB id
 updates a comment using the DB id and passed through JSON in the format of the comment model found above.
 
 
+# PokeAPI
+We recommend pairing our PokeBlog backend with the 3rd party [PokeApi](https://pokeapi.co/).
 
+With PokeAPI, you can send fetch requests in the frontend and render Pokemon information based on the caught Pokemon list in each blog. 
 
+Example query:
+```
+https://pokeapi.co/api/v2/pokemon/ditto
+```
