@@ -16,8 +16,14 @@ db.on('error', (error)=> console.log(error.message));
 db.on('disconnected', ()=> console.log('Mongoose disconnected...'));
 
 //controllers
+
 app.use('/blog', require('./controllers/blogController'))
 app.use('/comment', require('./controllers/commentController'))
+
+//home route
+app.get('/', (req, res)=> {
+    res.send('Welcome to pokeBlog_API')
+})
 
 app.listen(PORT, () => {
     console.log('server is listening')
