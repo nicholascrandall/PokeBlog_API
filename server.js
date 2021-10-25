@@ -3,9 +3,26 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 //middleware
 app.use(express.json())
+
+//cors
+const whitelist = [process.env.DEV_URL,process.env.PROD_URL]
+const corsOptions = {
+	origin: (origin, callback) => {
+		if (whitelist.indexOf(origin) !== -1 || !origin) {
+			callback(null, true)
+		} else {
+			callback(new Error('Not allowed by CORS'))
+		}
+	},
+    methods: "GET,PUT,PATCH,POST,DELETE",
+    credentials : true
+}
+
+app.use(cors(corsOptions))
 
 //mongoose
 mongoose.connect(process.env.MONGODBURI)
