@@ -9,7 +9,7 @@ const cors = require('cors')
 app.use(express.json())
 
 //cors
-const whitelist = [process.env.DEV_URL,process.env.PROD_URL]
+const whitelist = [process.env.DEV_URL]
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (whitelist.indexOf(origin) !== -1 || !origin) {

@@ -9,6 +9,7 @@ blog.get('/', (req, res) => {
             res.status(400).json({ error: error.message })
         }
         res.status(200).json({data: foundBlogs})
+        console.log('get route accessed')
     })
 })
 
