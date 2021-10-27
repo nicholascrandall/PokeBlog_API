@@ -28,8 +28,9 @@ comment.post('/', (req, res) => {
     CommentModel.create(req.body, (error, createdComment) => {
         if (error) {
             res.status(400).json({ error: error.message })
+        } else {
+            res.status(200).json(createdComment)
         }
-        res.status(200).json(createdComment)
     })
 })
 
@@ -37,12 +38,13 @@ comment.post('/', (req, res) => {
 comment.delete('/:id', (req, res) => {
     CommentModel.findByIdAndDelete(req.params.id, (error, deletedComment) => {
         if (error) {
-            req.status(400).json({ error: error.message })
+            res.status(400).json({ error: error.message })
         }
         else if (deletedComment === null) {
             res.status(404).json({ message: "Comment Not Found" })
+        } else {
+            res.status(200).json({ message: "Comment deleted successfully" })
         }
-        res.status(200).json({ message: "Comment deleted successfully" })
     })
 })
 

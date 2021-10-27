@@ -1,6 +1,7 @@
 const express = require('express')
 const blog = express.Router()
 const BlogModel = require('../models/blogModel')
+const blogSeed = require('../models/eventsSeed')
 
 //index
 blog.get('/', (req, res) => {
@@ -9,6 +10,16 @@ blog.get('/', (req, res) => {
             res.status(400).json({ error: error.message })
         }
         res.status(200).json({data: foundBlogs})
+    })
+})
+
+//blog seeding
+blog.get('/seed', (req, res) => {
+    BlogModel.create(blogSeed, (err, newBlogs) => {
+        if (err) {
+            res.status(400).json({ err: err.message });
+        }
+        res.status(200).json({data: newBlogs})
     })
 })
 
