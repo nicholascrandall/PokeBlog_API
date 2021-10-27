@@ -48,7 +48,7 @@ comment.delete('/:id', (req, res) => {
 
 // update
 comment.put('/:id', (req, res) => {
-    CommentModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedComment) => {
+    CommentModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedComment) => {
         if(error) {
             res.status(400).json({ error: error.message })
         }
