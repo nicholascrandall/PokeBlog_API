@@ -1,7 +1,7 @@
 const express = require('express')
 const blog = express.Router()
 const BlogModel = require('../models/blogModel')
-const blogSeed = require('../models/eventsSeed')
+const blogSeed = require('../models/blogSeed')
 
 //index
 blog.get('/', (req, res) => {
